@@ -1,7 +1,11 @@
 document.getElementById('getAllButton').addEventListener('click', getAll);
+var token = localStorage.getItem('token');
 function getAll() {
     fetch('/backend/usuarios.php', {
-        method: 'GET'
+        method: 'GET',
+        headers: {
+            'Authorization': token,
+        }
     })
     .then(response => {
         if (!response.ok) {

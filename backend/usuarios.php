@@ -11,6 +11,14 @@ $body = json_decode(file_get_contents('php://input'), true);
 $id=isset($_GET['id'])?$_GET['id']:'';
 switch($_SERVER["REQUEST_METHOD"]){
     case "POST";
+
+    $headers = getallheaders();
+    $token = $headers['Authorization'] ?? null;
+    if ($token === null || !this -> UserController -> isValidToken($token)){
+        return json_encode(['error' => 'Não autorizado']);
+    }
+
+
         $resultado = $users->insert($body);
         echo json_encode(['status'=>$resultado]);
     break;

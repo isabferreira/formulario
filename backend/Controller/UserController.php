@@ -74,4 +74,11 @@ class UserController {
         return false;
         
     }
+
+    public function isValidToken($token) {
+        $resultado= $this->model->read('token', ['token' => $token]);
+        return $resultado;
+    }
+
+
 }

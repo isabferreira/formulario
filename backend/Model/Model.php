@@ -169,4 +169,14 @@ public function criarViewProdutosPorUsuario(){
     GROUP BY u.id";
     $this->conn->exec($sql);
 }
+public function criarTabelaToken(){
+    $sql = "
+    CREATE TABLE IF NOT EXISTS token (
+        id INTEGER PRIMARY KEY,
+        id_user INTEGER NOT NULL,
+        token TEXT NOT NULL,
+        tempo TEXT DEFAULT (datetime('now', '+5 minutes' ))
+    )";
+    $this->conn->exec($sql);
+}
 }
