@@ -1,0 +1,353 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabarito:wght@400;600;700&family=Montserrat:wght@500;800&display=swap');
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background-image: url(../fundo.png);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.container{
+    width: 80%;
+    height: 80vh;
+    display: flex;
+    box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, .212);
+
+}
+.form-one{
+    width: 50%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #A0857B;
+    padding: 3rem;
+    color: #fff;
+    font-family: 'Gabarito', cursive;
+}
+.form-one h1{
+    margin-top: 60px;
+    font-size: 45px;
+}
+.form-one p{
+    text-align: center;
+    font-size: 25px;
+    margin: 20px 0px 160px 0px;
+}
+.form-one .voltar{
+    color: #d6c9bf;
+    padding: 10px;
+    font-size: 20px;
+}
+.voltar:hover{
+    color: #c7bcb3;
+}
+
+
+.form-one button{
+    border: none;
+    background-color: #D2C2B5;
+    padding:  20px 50px;
+    border-radius: 70px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    color: #6a5953;
+    font-weight: bold;
+    font-size: 20px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
+}
+.form-one a{
+    color: #6a5953;
+    text-decoration: none;
+}
+.form-one button:hover{
+    background-color: #af9c8c;
+}
+.form{
+    width: 50%;
+    display: flex;
+    /* justify-content: center;
+    align-items: center;*/
+    flex-direction: column;
+    background-color: #fff;
+    padding: 3rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.img-form img{
+    width: 100%;
+    margin-top: 90px;
+}
+.input-group button{
+    border: none;
+    background-color: #9e8370;
+    padding:  10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    color: #fff;
+    font-family: 'Gabarito', cursive;
+    font-size: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
+}
+.input-group .grafico{
+    text-decoration: none;
+    padding:  10px 10px;
+    cursor: pointer;
+    color: #8f705a;
+    font-family: 'Gabarito', cursive;
+    font-size: 18px;
+    font-weight: bold;
+    border: #9e8370 solid 2px;
+    border-radius: 50px;
+}
+.input-group .voltar{
+    color: #545454;
+}
+#submitButtonUsuario{
+    margin-left: 60px;
+    margin-top: 15px;
+    width: 125px;
+    border: none;
+    background-color: #9e8370;
+    padding:  10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    color: #fff;
+    font-family: 'Gabarito', cursive;
+    font-size: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
+}
+#submitButton{
+    border: none;
+    background-color: #9e8370;
+    padding:  10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    color: #fff;
+    font-family: 'Gabarito', cursive;
+    font-size: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
+}
+.input-group button:hover{
+    background-color: #8c7969;
+}
+.form-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 50px;
+}
+.form-header a{
+    padding: 10px 30px;
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+    font-family: 'Gabarito', cursive;
+    background-color: #A0857B;
+    border-radius: 50px;
+    margin: 0 5px 0;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .212);
+}
+.form-header a:hover{
+    background-color: #D2C2B5;
+}
+.form-header h1{
+    padding: 30px;
+}
+.input-group{
+    width: 80%;
+    color: #A0857B;
+    margin-bottom: 0px;
+    font-family: 'Gabarito', cursive;
+    margin-left: 60px;
+}
+.input-group input{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem ;
+    padding: 8px;
+    border: none;
+    border-radius: 10px;
+    background-color: #D9D9D9;
+}
+.input-group #getAllButton{
+    margin: 20px 0;
+    font-family: 'Gabarito', cursive;
+}
+.endereco{
+    width: 80%;
+    color: #A0857B;
+    font-family: 'Gabarito', cursive;
+    margin-left: 60px;
+}
+.endereco input{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    margin-bottom: 10px;
+    padding: 6px;
+    border: 2px solid #9e8370;
+    border-radius: 10px;
+    background-color: #ffffff3c;
+}
+.endereco ::placeholder{
+    color: #c7bcb3;
+}
+
+#mapid{
+    width: 100%;
+    height: 300px;
+    margin-bottom: 20px;
+}
+
+/****************************RESPONSIVO 768px****************************/
+
+@media(max-width: 1204px){
+    .container{
+        height: 80vh;
+    }
+    .form-one{
+        padding: 1rem;
+    }
+    .form-one h1{
+        font-size: 37px;
+    }
+    .form-one p{
+        font-size: 18px;
+    }
+    .form-one .voltar{
+        font-size: 17px;
+    }
+    .form-one button{
+        padding:  15px 45px;
+        font-size: 17px;
+    }
+    .form{
+        padding: 2rem;
+    }
+    .img-form img{
+    
+        margin-top: 150px;
+    }
+    .input-group button{
+        padding:  5px 25px;
+        font-size: 15px;
+    }
+    .form-header{
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+    .form-header a{
+        padding: 5px 25px;
+        font-size: 17px;
+        margin: 5px;
+    }
+    .form-header h1{
+        padding: 30px;
+    }
+    
+    .input-group h1{
+        font-size: 25px;
+    }
+    .input-group{
+        margin-left: 30px;
+    }
+    .input-group input{
+        padding: 5px;
+    }
+    
+    .input-group label{
+        font-size: 20px;
+    }
+    .input-group #getAllButton{
+        margin: 20px 0;
+        font-family: 'Gabarito', cursive;
+    }
+}
+ /****************************RESPONSIVO 420px****************************/
+
+@media(max-width: 785px){
+    body{
+        width: 100%;
+        height: 90vh;
+        background-image: url(../fundo.png);
+    }
+    .container{
+        width: 80%;
+        height: 80vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .form-one{
+        width: 100%;
+        height: 50%;
+        padding: 1rem;
+    }
+    .form-one h1{
+        margin-top: 30px;
+        font-size: 35px;
+    }
+    .form-one p{
+        font-size: 14px;
+        margin: 20px 0px 50px 0px;
+    }
+    .form-one .voltar{
+        color: #d6c9bf;
+        padding: 10px;
+        font-size: 13px;
+    }
+    .form-one button{
+        padding:  10px 35px;
+        margin-bottom: 15px;
+        font-size: 15px;
+    }
+    .form{
+        width: 100%;
+        height: 100%;
+        padding: 2rem;
+    }
+    .input-group button{
+        padding:  5px 25px;
+        font-size: 14px;
+    }
+    .form-header{
+        margin-bottom: 20px;
+    }
+    .form-header a{
+        padding: 5px 25px;
+        margin: 5px;
+        font-size: 15px;
+    }
+    .form-header h1{
+        padding: 30px;
+    }
+    .input-group{
+        margin-left: 20px;
+    }
+    .input-group h1{
+        font-size: 20px;
+    }
+    .input-group input{
+        margin-bottom: 1rem ;
+        padding: 5px;
+    }
+    .input-group label{
+        font-size: 14px;
+    }
+    .input-group #getAllButton{
+        margin: 15px 0;
+    }
+}

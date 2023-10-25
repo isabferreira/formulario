@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Gerenciamento de Usuários</title>
+</head>
+<body>
+    <div class="container">
+        <div class="form-one">
+            <h1>ABA USUÁRIOS</h1>
+            <p>Espaço de cadastro, busca, atualização e exclusão do usuário.</p>
+            <a class="voltar" href="../">Voltar à tela inicial</a>
+        </div>
+        <div class="form">
+                <div class="form-header">
+                    <a href="criaruser.html">CADASTRAR</a>
+                    <a href="todosuser.html">BUSCAR</a>
+                    <a href="buscauser.html">GERENCIAR</a>
+
+                </div>
+                <div class="input-group">
+                    <h1>BUSCAR USUÁRIO</h1>
+                    <label for="getUserId">ID do Usuário:</label>
+                    <input type="number" id="getUserId">
+                    <button type="submit" onclick="getUser()">Buscar</button>
+                    <br><br>
+                    <h1>GERENCIAR USUÁRIO</h1>
+                    <label for="inpuNome">Nome:</label>
+                    <input type="text" id="inpuNome">
+                    <label for="email">Email:</label>
+                    <input type="text" id="inputEmail">
+                    <button onclick="updateUser()">Atualizar</button>
+                    <button onclick="deleteUser()">Excluir</button>
+                </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/getUser.js"></script>
+    <script src="js/updateUser.js"></script>
+    <script src="js/deleteUser.js"></script>
+</body>
+</html>

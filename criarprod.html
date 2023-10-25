@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Cadastro de produtos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="container">
+        <div class="form-one">
+            <h1>ABA PRODUTOS</h1>
+            <p>Espaço de cadastro, busca, atualização e exclusão de produtos.</p>
+            <a class="voltar" href="../">Voltar à tela inicial</a>
+        </div>
+        <div class="form">
+                <div class="form-header">
+                    <a href="criarprod.html">CADASTRAR</a>
+                    <a href="todosprod.html">BUSCAR</a>
+                    <a href="buscaprod.html">GERENCIAR</a>
+                </div>
+                <div class="input-group">
+                    <h1>CADASTRAR PRODUTO</h1>
+                    <label for="Nome">Nome:</label>
+                    <input type="text" id="nomeprod" name="nomeprod" required>
+                    <label for="Preço">Preço:</label>
+                    <input type="text" id="precoprod" name="precoprod" required>
+                    <label for="Quantidade">Quantidade:</label>
+                    <input type="number" id="quantidadeprod" name="quantidadeprod" required> 
+                    <button type="button" id="submitButton">Cadastrar</button>
+                </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="js/createProd.js"></script>  <!-- Supondo que sua função esteja em script.js -->
+</body>
+</html>

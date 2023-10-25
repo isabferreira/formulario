@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Usuário</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-one">
+            <h1>FORMULÁRIO</h1>
+            <p>Espaço de cadastro, busca, atualização, exclusão e vinculação do usuário e produto.</p>
+            <a href="criaruser.html"><button>ABA USUÁRIOS</button></a>
+            <a href="criarprod.html"><button>ABA PRODUTOS</button></a>
+            <a href="prod_e_user.html"><button>PRODUTOS E USUÁRIOS</button></a>
+        </div>
+        <div class="form">
+            <form action="#">
+                <div class="img-form">
+                    <img src="imgmg.png" alt="imagem1">
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        window.onload = function() {
+            fetch('/backend/token')
+                .then(response => response.json())
+                .then(data => localStorage.setItem('token', data.token));
+        }
+        
+    </script>
+</body>
+</html>

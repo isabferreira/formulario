@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de Usuário</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/leaflet.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-one">
+            <h1>ABA USUÁRIOS</h1>
+            <p>Espaço de cadastro, busca, atualização e exclusão do usuário.</p>
+            <a class="voltar" href="../">Voltar à tela inicial</a>
+        </div>
+        <div class="form">
+                <div class="form-header">
+                    <a href="criaruser.html">CADASTRAR</a>
+                    <a href="todosuser.html">BUSCAR</a>
+                    <a href="buscauser.html">GERENCIAR</a>
+                </div>
+                <div class="input-group">
+                    <h1>CADASTRAR USUÁRIO</h1>
+                    <label for="Nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                    <label for="Email">Email:</label>
+                    <input type="text" id="email" name="email" required>
+                    <label for="nascido">Data de Nascimento:</label>
+                    <input type="date" id="datanascimento" name="datanascimento" required>
+                    <label for="Senha">Senha:</label>
+                    <input type="password" id="senha" name="senha" required>
+                </div>
+                    <div class="endereco">
+                        <details> <summary>Cadastrar Endereço</summary>
+                                <input placeholder="CEP" name="cep" type="text" id="cep" value="" size="10" maxlength="9"
+                                    onblur="pesquisacep(this.value);" /></label>
+
+                                <input placeholder="RUA" name="rua" type="text" id="rua" size="60" /></label>
+
+                                <input placeholder="BAIRRO" name="bairro" type="text" id="bairro" size="40" /></label>
+
+                                <input placeholder="CIDADE" name="cidade" type="text" id="cidade" size="40" /></label>
+                                
+                                <input placeholder="IBGE" name="ibge" type="text" id="ibge" size="8" /></label>
+
+                                <input placeholder="ESTADO" name="uf" type="text" id="uf" size="2" /></label><br/>
+                                <div id="mapid"></div>
+                        </details>
+                    </div>
+                <button type="button" id="submitButtonUsuario">Cadastrar</button>
+        </div>
+    </div>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="js/cep.js"></script>
+    <script src="js/createUser.js"></script>  <!-- Supondo que sua função esteja em script.js -->
+    <script src="js/leaflet.js"></script>
+</body>
+</html>
