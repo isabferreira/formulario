@@ -4,15 +4,17 @@ namespace App\usuarios;
 require "../vendor/autoload.php";
 
 use App\Controller\UserController;
+use App\Model\Usuario;
 
-$users = new UserController();
+$usuario = new Usuario();
+$users = new UserController($usuario);
 
 $body = json_decode(file_get_contents('php://input'), true);
 $id=isset($_GET['id'])?$_GET['id']:'';
 switch($_SERVER["REQUEST_METHOD"]){
     case "POST";
         $resultado = $users->insert($body);
-        echo json_encode(['status'=>$resultado]);
+        echo json_encode($resultado);
     break;
     case "GET";
         if(!isset($_GET['id'])){

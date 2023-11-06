@@ -16,9 +16,9 @@ class UserController {
     private $enderecos;
     private $controllerenderecos;
 
-    public function __construct() {
+    public function __construct($user) {
         $this->db = new Model();
-        $this->usuarios = new Usuario();
+        $this->usuarios = $user;
         $this->enderecos = new Endereco();
         // $this->db->excluirTabelaEndereco();
         // $this->db->criarTabelaEndereco();
@@ -39,10 +39,15 @@ class UserController {
         return  $user;
     }
     public function insert($data){
+        
         $this->usuarios->setNome($data['nome']);
         $this->usuarios->setEmail($data['email']);
         $this->usuarios->setDataNascimento($data['datanascimento']);
         $this->usuarios->setSenha($data['senha']);
+        $resultado = $this->db->select("users", ['email' => $this->usuarios->getEmail()]);
+        if ($resultado) {
+            return ['status' => false, 'message' => 'Usuário já existe.'];
+        }
         if($this->db->insert('users', [
             'nome'=>$this->usuarios->getNome(),
             'email'=>$this->usuarios->getEmail(),
@@ -79,7 +84,7 @@ class UserController {
 
     public function validarToken($token){
         
-        $key = TOKEN;
+        $key = "123456789123456789";
         $algoritimo = 'HS256';
         try {
             $decoded = JWT::decode($token, new Key($key, $algoritimo));
@@ -89,15 +94,14 @@ class UserController {
         }
     }
     public function login($senha) {
-        $condicoes = ['email' => $this->usuarios->getEmail()];
-        $resultado = $this->select($this->usuarios, $condicoes);
+        $resultado = $this->db->select("users", ['email' => $this->usuarios->getEmail()]);
         if (!$resultado) {
             return ['status' => false, 'message' => 'Usuário não encontrado.'];
         }
         if (!password_verify($senha,$resultado[0]['senha'])) {
             return ['status' => false, 'message' => 'Senha incorreta.'];
         }
-        $key = TOKEN;
+        $key = "123456789123456789";
         $algoritimo='HS256';
             $payload = [
                 "iss" => "localhost",

@@ -1,4 +1,4 @@
-document.getElementById('loginForm').addEventListener('submit', function(event){
+document.getElementById('loginForm').addEventListener('click', function(event){
   event.preventDefault();
 
       const emailUsuario = document.getElementById('email').value;
@@ -36,6 +36,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event){
               alert('Erro ao logar')
           }else{
               swal("Login feito com sucesso!", " ", "success");
+              window.location.href = "todosuser.html"
           } 
          
       })

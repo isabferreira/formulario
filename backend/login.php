@@ -10,6 +10,7 @@ $usuario = new Usuario();
 
 $body = json_decode(file_get_contents('php://input'), true);
 $id=isset($_GET['id'])?$_GET['id']:'';
+
 switch($_SERVER["REQUEST_METHOD"]){
     case "POST";
     if (isset($body['email'])) {
