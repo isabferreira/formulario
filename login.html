@@ -16,22 +16,22 @@
         </div>
         <div class="form">
                 <div class="form-header">
-                  <a href="criaruser.html">CADASTRAR</a>
-                  <a href="login.html">LOGIN</a>
                   <a href="todosuser.html">BUSCAR</a>
                   <a href="buscauser.html">GERENCIAR</a>
                 </div>
 
                 
                 <div class="input-group">
-                  <form id="loginForm">
-                    <h1>LOGAR USUÁRIO</h1>
+                  <form id="loginForm" method="post">
+                    <h1>ENTRAR</h1>
                     <label for="Email">Email:</label>
                     <input type="text" id="email" name="email" required>
                     <label for="Senha">Senha:</label>
                     <input type="password" id="senha" name="senha" required>
-                    <input type="submit" value="Logar">
+                    <input type="submit" id="loginForm" value="Logar" >
                   </form>
+
+                  <p>Ainda não possui cadastro? <a href="criaruser.html"><u>Cadastre-se</u></a></p>
                 </div>
         </div>
     </div>

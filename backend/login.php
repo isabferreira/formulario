@@ -1,61 +1,50 @@
 <?php
-require '../vendor/autoload.php';  
 
-use Firebase\JWT\JWT;
-use App\Model\Model;
-use App\Model\Usuario;
+namespace App\usuarios;
+require "../vendor/autoload.php";
+
 use App\Controller\UserController;
-$algoritimo='HS256';
-$model = new Model();
+use App\Model\Usuario;
+
 $usuario = new Usuario();
-$model -> criarTabelaToken();
-$usercontroller = new UserController();
-$ipautorizado = ['::1', '123.123.123.124'];
-if (!in_array($_SERVER['REMOTE_ADDR'], $ipautorizado)) {
-    echo json_encode(['error' => 'Acesso não autorizado'], 403);
-    exit;
-}
 
-//$secretKey = bin2hex(openssl_random_pseudo_bytes(16))
-$secretKey = "5555555538975187454316875";
-$data = json_decode(file_get_contents('php://input'), true);
-
-if (isset($data['username']) && isset($data['password'])) {
-    $username = $data['username'];
-    $password = $data['password'];
-    
-    $usuario->setEmail($username);
-    $usuario->setSenha($password);
-
-    $data = $model->select('users', ['email' => $username]);
-    if (!$data) {
-        http_response_code(500);
-        echo json_encode(['error' => 'Erro interno do servidor.']);
-        exit;
+$body = json_decode(file_get_contents('php://input'), true);
+$id=isset($_GET['id'])?$_GET['id']:'';
+switch($_SERVER["REQUEST_METHOD"]){
+    case "POST";
+    if (isset($body['email'])) {
+        $usuario->setEmail($body['email']);
+        $senha=$body['senha'];
+        // $lembrar=$body['lembrar'];
+        $usuariosController = new UserController($usuario);
+        $resultado = $usuariosController->login($senha);
+        if(!$resultado['status']){
+            echo json_encode(['status' => $resultado['status'], 'message' => $resultado['message']]);
+           exit;
+        }
+        echo json_encode(['status' => $resultado['status'], 'message' => $resultado['message'],'token'=>$resultado['token']]);
     }
-    if (!empty($data) && password_verify($password, $data[0]['senha'])) {
-        $usuario->setId($data[0]['id']);
+    break;
 
-        $payload = [
-            "iss" => "localhost",
-            "aud" => "localhost",
-            "iat" => time(),
-            "exp" => time() + (60 * 3),  
-            "data" => [
-                "userId" => $usuario->getId(),
-                "username" => $usuario->getNome(),
-            ]
-        ];
-        
-
-        $jwt = JWT::encode($payload, $secretKey, $algoritimo);
-        $model->insert('token', ['id_user' => $usuario->getId(),'token'=> $jwt]);
-        echo json_encode(['token' => $jwt]);
-    } else {
-        http_response_code(401);
-        echo json_encode(['error' => 'Email ou senha inválidos.']);
-    }
-} else {
-    http_response_code(400);
-    echo json_encode(['error' => 'Requisição inválida.']);
+        $resultado = $users->insert($body);
+        echo json_encode(['status'=>$resultado]);
+    break;
+    case "GET";
+        if(!isset($_GET['id'])){
+            $resultado = $users->select();
+            echo json_encode(["usuarios"=>$resultado]);
+        }else{
+            $resultado = $users->selectId($id);
+            echo json_encode(["status"=>true,"usuario"=>$resultado[0]]);
+        }
+       
+    break;
+    case "PUT";
+        $resultado = $users->update($body,intval($_GET['id']));
+        echo json_encode(['status'=>$resultado]);
+    break;
+    case "DELETE";
+        $resultado = $users->delete(intval($_GET['id']));
+        echo json_encode(['status'=>$resultado]);
+    break;  
 }

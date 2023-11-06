@@ -16,8 +16,7 @@ function getUser(){
     })
     .then(data => {
         if(!data.status){
-            alert('Usuário não encontrado')
-            document.getElementById("inpuNome").value = ''; 
+            alert('Usuário não encontrado');
         }else{
             document.getElementById("inpuNome").value = data.usuario.nome; 
             document.getElementById("inputEmail").value = data.usuario.email;

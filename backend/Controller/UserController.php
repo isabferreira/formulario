@@ -6,7 +6,9 @@ use App\Model\Model;
 use App\Model\Usuario;
 use App\Model\Endereco;
 use App\Controller\EnderecoController;
-
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+use Exception;
 class UserController {
 
     private $db;
@@ -75,9 +77,38 @@ class UserController {
         
     }
 
-    public function isValidToken($token) {
-        $resultado= $this->model->read('token', ['token' => $token]);
-        return $resultado;
+    public function validarToken($token){
+        
+        $key = TOKEN;
+        $algoritimo = 'HS256';
+        try {
+            $decoded = JWT::decode($token, new Key($key, $algoritimo));
+            return ['status' => true, 'message' => 'Token válido!', 'data' => $decoded];
+        } catch(Exception $e) {
+            return ['status' => false, 'message' => 'Token inválido! Motivo: ' . $e->getMessage()];
+        }
+    }
+    public function login($senha) {
+        $condicoes = ['email' => $this->usuarios->getEmail()];
+        $resultado = $this->select($this->usuarios, $condicoes);
+        if (!$resultado) {
+            return ['status' => false, 'message' => 'Usuário não encontrado.'];
+        }
+        if (!password_verify($senha,$resultado[0]['senha'])) {
+            return ['status' => false, 'message' => 'Senha incorreta.'];
+        }
+        $key = TOKEN;
+        $algoritimo='HS256';
+            $payload = [
+                "iss" => "localhost",
+                "aud" => "localhost",
+                "iat" => time(),
+                "exp" => time() + (60 * 3)
+            ];
+            
+            $jwt = JWT::encode($payload, $key,$algoritimo);
+           
+        return ['status' => true, 'message' => 'Login bem-sucedido!','token'=>$jwt];
     }
 
 

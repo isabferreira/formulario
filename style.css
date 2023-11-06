@@ -52,8 +52,6 @@ body{
 .voltar:hover{
     color: #c7bcb3;
 }
-
-
 .form-one button{
     border: none;
     background-color: #D2C2B5;
@@ -99,6 +97,7 @@ body{
     font-size: 15px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
 }
+
 .input-group .grafico{
     text-decoration: none;
     padding:  10px 10px;
@@ -127,6 +126,7 @@ body{
     font-size: 15px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
 }
+
 #submitButton{
     border: none;
     background-color: #9e8370;
