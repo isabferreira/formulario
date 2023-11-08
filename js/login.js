@@ -36,9 +36,10 @@ document.getElementById('loginForm').addEventListener('click', function(event){
               alert('Erro ao logar')
           }else{
               swal("Login feito com sucesso!", " ", "success");
-              window.location.href = "todosuser.html"
+              window.location.href = "paginaY.html"
           } 
          
       })
       .catch(error => alert('Erro na requisição: ' + error));
   });
+  

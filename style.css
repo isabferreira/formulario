@@ -167,6 +167,27 @@ body{
 .form-header h1{
     padding: 30px;
 }
+.form-header-y{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.form-header-y a{
+    padding: 10px 30px;
+    width: 300px;
+    text-decoration: none;
+    color: white;
+    font-size: 17px;
+    font-family: 'Gabarito', cursive;
+    background-color: #A0857B;
+    border-radius: 50px;
+    margin: 30px 5px 0;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, .212);
+}
+.form-header-y a:hover{
+    background-color: #D2C2B5;
+}
 .input-group{
     width: 80%;
     color: #A0857B;
