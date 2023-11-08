@@ -14,7 +14,12 @@ $id=isset($_GET['id'])?$_GET['id']:'';
 switch($_SERVER["REQUEST_METHOD"]){
     case "POST";
         $resultado = $users->insert($body);
-        echo json_encode($resultado);
+        if($resultado){
+            echo json_encode(['status' => true, 'message' => 'Usuário inserido.']);
+        }else{
+            echo json_encode(['status' => false, 'message' => 'Usuário já existe.']);
+        }
+        
     break;
     case "GET";
         if(!isset($_GET['id'])){

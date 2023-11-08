@@ -46,7 +46,7 @@ class UserController {
         $this->usuarios->setSenha($data['senha']);
         $resultado = $this->db->select("users", ['email' => $this->usuarios->getEmail()]);
         if ($resultado) {
-             return ['status' => false, 'message' => 'Usuário já existe.'];
+             return false;
          }
         if($this->db->insert('users', [
             'nome'=>$this->usuarios->getNome(),
@@ -67,7 +67,7 @@ class UserController {
             return true;
            } 
         }
-        return false;
+       
     }
     public function update($newData,$condition){
         if($this->db->update('users', $newData, ['id'=>$condition])){

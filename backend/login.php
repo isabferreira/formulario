@@ -42,6 +42,5 @@ switch($_SERVER["REQUEST_METHOD"]){
         }
         echo json_encode(['status' => true, 'message' => 'Token válido']);
     exit;
-   
 break;  
 }

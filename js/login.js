@@ -35,6 +35,7 @@ document.getElementById('loginForm').addEventListener('click', function(event){
           if(!data.status){
               alert('Erro ao logar')
           }else{
+            sessionStorage.setItem('token', data.token);
               swal("Login feito com sucesso!", " ", "success");
               window.location.href = "paginaY.html"
           } 
