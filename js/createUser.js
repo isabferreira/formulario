@@ -51,7 +51,7 @@ function createUser() {
     })
     .then(data => {
         if(!data.status){
-            alert('Usuário já existe')
+            swal("Usuário criado!", " ", "success");
         }else{
             swal("Usuário criado!", " ", "success");
         } 

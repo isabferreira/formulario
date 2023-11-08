@@ -37,12 +37,14 @@ body{
 }
 .form-one h1{
     margin-top: 60px;
-    font-size: 45px;
+    font-size: 38px;
+    display: flex;
+    text-align: center;
 }
 .form-one p{
     text-align: center;
-    font-size: 25px;
-    margin: 20px 0px 160px 0px;
+    font-size: 20px;
+    margin: 20px 0px 100px 0px;
 }
 .form-one .voltar{
     color: #d6c9bf;
@@ -54,19 +56,19 @@ body{
 }
 .form-one button{
     border: none;
+    width: 300px;
     background-color: #D2C2B5;
-    padding:  20px 50px;
+    padding:  15px 0;
     border-radius: 70px;
     margin-bottom: 20px;
     cursor: pointer;
     color: #6a5953;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 16px;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
 }
 .form-one a{
     color: #6a5953;
-    text-decoration: none;
 }
 .form-one button:hover{
     background-color: #af9c8c;
@@ -146,7 +148,7 @@ body{
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
-    margin-top: 50px;
+    margin-top: 10px;
 }
 .form-header a{
     padding: 10px 30px;
@@ -298,11 +300,11 @@ body{
     }
     .form-one h1{
         margin-top: 30px;
-        font-size: 35px;
+        font-size: 30px;
     }
     .form-one p{
         font-size: 14px;
-        margin: 20px 0px 50px 0px;
+        margin: 10px 0px 18px 0px;
     }
     .form-one .voltar{
         color: #d6c9bf;
@@ -310,9 +312,10 @@ body{
         font-size: 13px;
     }
     .form-one button{
-        padding:  10px 35px;
+        width: 250px;
+        padding: 10px;
         margin-bottom: 15px;
-        font-size: 15px;
+        font-size: 12px;
     }
     .form{
         width: 100%;
