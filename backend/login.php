@@ -4,6 +4,7 @@ namespace App\usuarios;
 require "../vendor/autoload.php";
 
 use App\Controller\UserController;
+use Firebase\JWT\JWT;
 use App\Model\Usuario;
 
 $usuario = new Usuario();
@@ -31,21 +32,16 @@ switch($_SERVER["REQUEST_METHOD"]){
         echo json_encode(['status'=>$resultado]);
     break;
     case "GET";
-        if(!isset($_GET['id'])){
-            $resultado = $users->select();
-            echo json_encode(["usuarios"=>$resultado]);
-        }else{
-            $resultado = $users->selectId($id);
-            echo json_encode(["status"=>true,"usuario"=>$resultado[0]]);
+        $headers = getallheaders();
+        $token = $headers['Authorization'] ?? null;
+        $usuariosController = new UserController($usuario);
+        $validationResponse = $usuariosController->validarToken($token);
+        if ($token === null || !$validationResponse['status']) {
+            echo json_encode(['status' => false, 'message' => $validationResponse['message']]);
+            exit;
         }
-       
-    break;
-    case "PUT";
-        $resultado = $users->update($body,intval($_GET['id']));
-        echo json_encode(['status'=>$resultado]);
-    break;
-    case "DELETE";
-        $resultado = $users->delete(intval($_GET['id']));
-        echo json_encode(['status'=>$resultado]);
-    break;  
+        echo json_encode(['status' => true, 'message' => 'Token válido']);
+    exit;
+   
+break;  
 }

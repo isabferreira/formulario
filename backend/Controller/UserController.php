@@ -21,7 +21,7 @@ class UserController {
         $this->usuarios = $user;
         $this->enderecos = new Endereco();
         // $this->db->excluirTabelaEndereco();
-        // $this->db->criarTabelaEndereco();
+        //  $this->db->criarTabelaEndereco();
     }
     public function select(){
         $user = $this->db->select('users');
@@ -46,19 +46,20 @@ class UserController {
         $this->usuarios->setSenha($data['senha']);
         $resultado = $this->db->select("users", ['email' => $this->usuarios->getEmail()]);
         if ($resultado) {
-            return ['status' => false, 'message' => 'Usuário já existe.'];
-        }
+             return ['status' => false, 'message' => 'Usuário já existe.'];
+         }
         if($this->db->insert('users', [
             'nome'=>$this->usuarios->getNome(),
             'email'=>$this->usuarios->getEmail(),
             'datanascimento'=>$this->usuarios->getDataNascimento(),
             'senha'=>$this->usuarios->getSenha()])){
-           $iduser=$this->db->getLastInsertId();
+            $iduser=$this->db->getLastInsertId();
             $this->enderecos->setCep($data['cep']);
             $this->enderecos->setRua($data['rua']);
             $this->enderecos->setBairro($data['bairro']);
             $this->enderecos->setCidade($data['cidade']);
             $this->enderecos->setUf($data['uf']);
+            $this->enderecos->setIduser($iduser);
             $this->controllerenderecos = new EnderecoController($this->enderecos);
            if ($this->controllerenderecos->insert()) {
 
@@ -95,6 +96,7 @@ class UserController {
     }
     public function login($senha) {
         $resultado = $this->db->select("users", ['email' => $this->usuarios->getEmail()]);
+        $checado = 3;
         if (!$resultado) {
             return ['status' => false, 'message' => 'Usuário não encontrado.'];
         }
@@ -107,7 +109,7 @@ class UserController {
                 "iss" => "localhost",
                 "aud" => "localhost",
                 "iat" => time(),
-                "exp" => time() + (60 * 3)
+                "exp" => time() + (60 * $checado)
             ];
             
             $jwt = JWT::encode($payload, $key,$algoritimo);

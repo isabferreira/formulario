@@ -50,10 +50,11 @@ function createUser() {
         return response.json();
     })
     .then(data => {
+        if(data.status){
+            swal("Usuário criado!", " ", "success");
+        }
         if(!data.status){
-            swal("Usuário criado!", " ", "success");
-        }else{
-            swal("Usuário criado!", " ", "success");
+            swal("Usuário já existe!", " ", "warning");
         } 
        
     })
