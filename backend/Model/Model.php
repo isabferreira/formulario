@@ -6,17 +6,17 @@ use PDOException;
 
 class Model {
  private $host = "localhost";
- private $db_name = "test_drive";
+ private $db_name = "isabela";
  private $username = "root";
- private $password = "root123";
+ private $password = "1234";
  private $conn;
- private $db_type = "sqlite"; // Opções: "mysql", "pgsql", "sqlite", "mssql"
+ private $db_type = "mysql"; // Opções: "mysql", "pgsql", "sqlite", "mssql"
 
  public function __construct() {
      $this->connect();
-     $this->criarTabelaEndereco();
-     $this->criarTabelaVendas();
-     $this->criarViewProdutosPorUsuario();
+    //  $this->criarTabelaEndereco();
+    //  $this->criarTabelaVendas();
+    //  $this->criarViewProdutosPorUsuario();
  }
 
  private function connect() {

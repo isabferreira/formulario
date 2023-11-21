@@ -47,12 +47,15 @@ body{
     margin: 20px 0px 100px 0px;
 }
 .form-one .voltar{
-    color: #d6c9bf;
-    padding: 10px;
-    font-size: 20px;
+    color: #6a5953;
+    padding: 10px 15px;
+    font-size: 18px;
+    background-color: #d6c9bf;
+    border-radius: 70px;
+    text-decoration: none;
 }
 .voltar:hover{
-    color: #c7bcb3;
+    color: #a7998e;
 }
 .form-one button{
     border: none;

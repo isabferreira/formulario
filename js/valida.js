@@ -7,7 +7,7 @@
 
   async function validaToken() {
     try {
-        const response = await fetch('backend/loginn.php', {
+        const response = await fetch('backend/login.php', {
             method: 'GET',
             headers: {
                 'Authorization':  token

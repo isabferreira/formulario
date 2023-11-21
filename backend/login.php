@@ -40,12 +40,4 @@ switch($_SERVER["REQUEST_METHOD"]){
         }
        
     break;
-    case "PUT";
-        $resultado = $users->update($body,intval($_GET['id']));
-        echo json_encode(['status'=>$resultado]);
-    break;
-    case "DELETE";
-        $resultado = $users->delete(intval($_GET['id']));
-        echo json_encode(['status'=>$resultado]);
-    break;  
 }

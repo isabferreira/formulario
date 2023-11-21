@@ -24,6 +24,7 @@ function getUser(){
         }
         return response.json();
     })
+    
     .then(data => {
         if(!data.status){
             alert('Usuário não encontrado');
@@ -32,6 +33,8 @@ function getUser(){
             console.log(data);
             document.getElementById("inpuNome").value = data.usuario.nome; 
             document.getElementById("inputEmail").value = data.usuario.email;
+            
+            
             const listEnd = document.getElementById("listEnd");
             const ul =  document.createElement("ul");
             ul.setAttribute("id", "listEnd");
