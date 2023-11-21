@@ -1,35 +1,30 @@
 <!DOCTYPE html>
-<html lang="pt_BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Usuário</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <div class="form-one">
-            <h1>FORMULÁRIO</h1>
-            <p>Espaço de cadastro, busca, atualização, exclusão e vinculação do usuário e produto.</p>
-            <a href="login.html"><button>ABA USUÁRIOS</button></a>
-            <a href="criarprod.html"><button>ABA PRODUTOS</button></a>
-            <a href="prod_e_user.html"><button>PRODUTOS E USUÁRIOS</button></a>
+    <html lang="pt_BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulário de Usuário</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/leaflet.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="form-one">
+                <h1>SISTEMA</h1>
+                <p>Entre ou cadastre-se</p>
+                <a href="login.html"><button>ENTRAR</button></a>
+                <a href="criaruser.html"><button>CADASTRAR</button></a>
+                <a class="voltar" href="todosprod.html">Continuar sem login</a>
+            </div>
+            <div class="form">
+                    <div class="img-form">
+                      <img src="imgmg.png" alt="">
+    
+                    </div>
+            </div>
         </div>
-        <div class="form">
-            <form action="#">
-                <div class="img-form">
-                    <img src="imgmg.png" alt="imagem1">
-                </div>
-            </form>
-        </div>
-    </div>
-    <script>
-        window.onload = function() {
-            fetch('/backend/token')
-                .then(response => response.json())
-                .then(data => localStorage.setItem('token', data.token));
-        }
-        
-    </script>
-</body>
-</html>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="js/login.js"></script>
+    </body>
+    </html>
+    

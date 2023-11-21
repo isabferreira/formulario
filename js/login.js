@@ -23,20 +23,22 @@ document.getElementById('loginForm').addEventListener('click', function(event){
       })
       .then(response => {
           if (!response.ok) {
-              if (response.status === 401) {
-                  throw new Error('Não autorizado');
-              } else {
-                  throw new Error('Sem rede ou não conseguiu localizar o recurso');
-              }
+                if (response.status === 401) {
+                    throw new Error('Não autorizado');
+                } else {
+                    throw new Error('Sem rede ou não conseguiu localizar o recurso');
+                }
           }
           return response.json();
       })
       .then(data => {
           if(!data.status){
-              alert('Erro ao logar')
+                alert('Erro ao logar')
           }else{
-              swal("Login feito com sucesso!", " ", "success");
-              window.location.href = "todosuser.html"
+                console.log(data);
+                sessionStorage.setItem('token', data.token);
+                swal("Login feito com sucesso!", " ", "success");
+                window.location.href = "menu.html";
           } 
          
       })

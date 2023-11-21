@@ -42,7 +42,6 @@ class UserController {
         
         $this->usuarios->setNome($data['nome']);
         $this->usuarios->setEmail($data['email']);
-        $this->usuarios->setDataNascimento($data['datanascimento']);
         $this->usuarios->setSenha($data['senha']);
         $resultado = $this->db->select("users", ['email' => $this->usuarios->getEmail()]);
         if ($resultado) {
@@ -51,7 +50,6 @@ class UserController {
         if($this->db->insert('users', [
             'nome'=>$this->usuarios->getNome(),
             'email'=>$this->usuarios->getEmail(),
-            'datanascimento'=>$this->usuarios->getDataNascimento(),
             'senha'=>$this->usuarios->getSenha()])){
            $iduser=$this->db->getLastInsertId();
             $this->enderecos->setCep($data['cep']);

@@ -1,37 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt_BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário de Usuário</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="css/leaflet.css">
-</head>
-<body>
-    <div class="container">
-        <div class="form-one">
-            <h1>ABA USUÁRIOS</h1>
-            <p>Espaço de cadastro, busca, atualização e exclusão do usuário.</p>
-            <a class="voltar" href="../">Voltar à tela inicial</a>
+    <html lang="pt_BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulário de Usuário</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/leaflet.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="form-one">
+                <h1>SISTEMA</h1>
+                <p>Entre ou cadastre-se</p>
+                <a href="login.html"><button>ENTRAR</button></a>
+                <a href="criaruser.html"><button>CADASTRAR</button></a>
+            </div>
+            <div class="form">
+                    <div class="input-group">
+                      <form>
+                        <h1>ENTRAR</h1>
+                        <p>Ainda não possui cadastro? <a href="criaruser.html"><u>Cadastre-se</u></a></p><br>
+                        <label for="Email">Email:</label>
+                        <input type="text" id="email" name="email" required>
+                        <label for="Senha">Senha:</label>
+                        <input type="password" id="senha" name="senha" required>
+                        <button id="loginForm" >Logar</button><br>
+                      </form>
+                    </div>
+            </div>
         </div>
-        <div class="form">
-                <div class="input-group">
-                  <form>
-                    <h1>ENTRAR</h1>
-                    
-                    <p>Ainda não possui cadastro? <a href="criaruser.html"><u>Cadastre-se</u></a></p><br>
-                    <label for="Email">Email:</label>
-                    <input type="text" id="email" name="email" required>
-                    <label for="Senha">Senha:</label>
-                    <input type="password" id="senha" name="senha" required>
-                    <button id="loginForm" >Logar</button><br>
-                  </form>
-
-                  
-                </div>
-        </div>
-    </div>
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script src="js/login.js"></script>
-</body>
-</html>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script src="js/login.js"></script>
+    </body>
+    </html>
+    
