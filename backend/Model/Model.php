@@ -14,9 +14,6 @@ class Model {
 
  public function __construct() {
      $this->connect();
-    //  $this->criarTabelaEndereco();
-    //  $this->criarTabelaVendas();
-    //  $this->criarViewProdutosPorUsuario();
  }
 
  private function connect() {
@@ -126,63 +123,9 @@ public function deleteWithCustomCondition($table, $condition) {
         return $stmt->execute();
 }
 
-public function criarTabelaEndereco(){
-    $sql = "
-    CREATE TABLE IF NOT EXISTS endereco (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        cep TEXT NOT NULL,
-        rua TEXT NOT NULL,
-        bairro TEXT NOT NULL,
-        cidade TEXT NOT NULL,
-        uf TEXT NOT NULL,
-        iduser INTEGER,
-        FOREIGN KEY (iduser)
-        REFERENCES users (id) ON DELETE CASCADE
-    )";
-    $this->conn->exec($sql);    
-}
-
-public function ExcluirTabelaEndereco(){
-    $sql = "DROP TABLE endereco";
-    $this->conn->exec($sql);
-}
-
-public function criarTabelaVendas(){
-    $sql = "
-    CREATE TABLE IF NOT EXISTS vendas (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        id_usuario INTEGER,
-        id_produto INTEGER,
-        data_cadastro DATE,
-        FOREIGN KEY (id_usuario) REFERENCES users(id),
-        FOREIGN KEY (id_produto) REFERENCES produtos(id)
-    )";
-    $this->conn->exec($sql);
-}
-
-public function criarViewProdutosPorUsuario(){
-    $sql = "
-    CREATE VIEW IF NOT EXISTS produtos_por_usuario AS
-    SELECT u.id, u.nome, COUNT(v.id_produto) as quantidade_produtos
-    FROM users u
-    LEFT JOIN vendas v ON u.id = v.id_usuario
-    GROUP BY u.id";
-    $this->conn->exec($sql);
-}
-public function criarTabelaToken(){
-    $sql = "
-    CREATE TABLE IF NOT EXISTS token (
-        id INTEGER PRIMARY KEY,
-        id_user INTEGER NOT NULL,
-        token TEXT NOT NULL,
-        tempo TEXT DEFAULT (datetime('now', '+5 minutes' ))
-    )";
-    $this->conn->exec($sql);
-}
-
-public function selectPermissoesPorPerfil($perfilId) {
+public function selectPermissoesPorPerfil($perfilid) {
     $stmt = $this->conn->prepare("CALL GetPermissoesPorPerfil(:perfilid)");
-    $stmt->bindValue(":perfilid", $perfilId, PDO::PARAM_INT);
+    $stmt->bindValue(":perfilid", $perfilid, PDO::PARAM_INT);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }

@@ -24,7 +24,6 @@
     const itensMenu = document.querySelectorAll('a.ini');
     itensMenu.forEach(item => {
         const nomeTela = item.href.split('/').pop().replace('.html', ''); 
-        const botao = document.getElementById("botinicio");
         if (telasPermitidas.includes(nomeTela)) {
             item.parentElement.style.display = 'flex'; 
             item.style.display = 'flex';
