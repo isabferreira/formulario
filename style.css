@@ -73,6 +73,31 @@ body{
 .form-one a{
     color: #6a5953;
 }
+.form-menu{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 3rem;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.menu-btn a{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-decoration: none;
+    margin-bottom: 30px;
+    background-color: #9e8370;
+    padding:  10px 30px;
+    border-radius: 50px;
+    cursor: pointer;
+    color: #fff;
+    font-family: 'Gabarito', cursive;
+    font-size: 15px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .212);
+}
 .form-one button:hover{
     background-color: #af9c8c;
 }

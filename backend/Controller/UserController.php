@@ -105,7 +105,7 @@ class UserController {
                 "iss" => "localhost",
                 "aud" => "localhost",
                 "iat" => time(),
-                "exp" => time() + (60 * 3)
+                "exp" => time() + (60 * 60)
             ];
             
             $jwt = JWT::encode($payload, $key,$algoritimo);
