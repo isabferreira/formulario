@@ -124,7 +124,10 @@ public function deleteWithCustomCondition($table, $condition) {
 }
 
 public function selectPermissoesPorPerfil($perfilid) {
-    $stmt = $this->conn->prepare("CALL GetPermissoesPorPerfil(:perfilid)");
+    $stmt = $this->conn->prepare(" SELECT perm.nome 
+    FROM permissoes perm
+    JOIN perfil_permissoes pp ON perm.id = pp.permissao_id
+    WHERE pp.perfilid = :perfilid;");
     $stmt->bindValue(":perfilid", $perfilid, PDO::PARAM_INT);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);

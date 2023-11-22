@@ -3,22 +3,28 @@
 namespace App\usuarios;
 require "../vendor/autoload.php";
 
+header('Content-Type: application/json');
+header('Access-Control-Allow-Origin: * ' );
+header('Access-Control-Allow-Methods: OPTIONS, GET, POST, PUT, DELETE');
+header('Access-Control-Allow-Headers: Content-Type');
+header('Cache-Control: no-cache, no-store, must-revalidate');
+
 use App\Controller\UserController;
 use App\Model\Usuario;
 
 $usuario = new Usuario();
-
+$usuariosController = new UserController();
 $body = json_decode(file_get_contents('php://input'), true);
 $id=isset($_GET['id'])?$_GET['id']:'';
 
 switch($_SERVER["REQUEST_METHOD"]){
     case "POST";
     if (isset($body['email'])) {
-        $usuario->setEmail($body['email']);
+        $email = $body['email'];
         $senha=$body['senha'];
         // $lembrar=$body['lembrar'];
-        $usuariosController = new UserController($usuario);
-        $resultado = $usuariosController->login($senha);
+       
+        $resultado = $usuariosController->login($senha,$email);
         if(!$resultado['status']){
             echo json_encode(['status' => $resultado['status'], 'message' => $resultado['message']]);
            exit;
@@ -31,13 +37,16 @@ switch($_SERVER["REQUEST_METHOD"]){
         echo json_encode(['status'=>$resultado]);
     break;
     case "GET";
-        if(!isset($_GET['id'])){
-            $resultado = $users->select();
-            echo json_encode(["usuarios"=>$resultado]);
-        }else{
-            $resultado = $users->selectId($id);
-            echo json_encode(["status"=>true,"usuario"=>$resultado[0]]);
-        }
+    $headers = getallheaders();
+    $token = $headers['Authorization'] ?? null;
+    $usuariosController = new UserController();
+    $validationResponse = $usuariosController->validarToken($token);
+    if ($token === null || !$validationResponse['status']) {
+        echo json_encode($validationResponse);
+        exit;
+    }
+    echo json_encode($validationResponse);
+    exit;
        
     break;
 }

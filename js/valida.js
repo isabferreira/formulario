@@ -20,15 +20,14 @@
        } 
        console.log(jsonResponse);
     const telasPermitidas = jsonResponse.telas.map(telas => telas.nome);
+    console.log(telasPermitidas);
     const nomePaginaAtual = window.location.pathname.split('/').pop().replace('.html', '');
-    const itensMenu = document.querySelectorAll('a.ini');
+    const itensMenu = document.querySelectorAll('a.item');
     itensMenu.forEach(item => {
         const nomeTela = item.href.split('/').pop().replace('.html', ''); 
         if (telasPermitidas.includes(nomeTela)) {
-            item.parentElement.style.display = 'flex'; 
             item.style.display = 'flex';
         } else {
-            item.parentElement.style.display = 'none'; 
             item.style.display = 'none'; 
         }
     });
@@ -48,7 +47,7 @@
         redirecioneLogin(jsonResponse.message);
     }
 } catch (error) {
-    console.error("Erro ao validar token:", error);
+    console.log("Erro ao validar token:", error);
 }
 }
 

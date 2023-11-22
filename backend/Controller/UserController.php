@@ -16,9 +16,9 @@ class UserController {
     private $enderecos;
     private $controllerenderecos;
 
-    public function __construct($user) {
+    public function __construct() {
         $this->db = new Model();
-        $this->usuarios = $user;
+        $this->usuarios = new Usuario();
         $this->enderecos = new Endereco();
         // $this->db->excluirTabelaEndereco();
         // $this->db->criarTabelaEndereco();
@@ -86,31 +86,34 @@ class UserController {
         $algoritimo = 'HS256';
         try {
             $decoded = JWT::decode($token, new Key($key, $algoritimo));
-            return ['status' => true, 'message' => 'Token válido!', 'data' => $decoded];
+            $permissoes = $decoded->telas;
+            return ['status' => true, 'message' => 'Token válido!', 'telas' => $permissoes];
         } catch(Exception $e) {
             return ['status' => false, 'message' => 'Token inválido! Motivo: ' . $e->getMessage()];
         }
     }
-    public function login($senha) {
-        $resultado = $this->db->select("users", ['email' => $this->usuarios->getEmail()]);
+    public function login($senha,$email) {
+        $resultado = $this->db->select("users", ['email' => $email]);
         if (!$resultado) {
             return ['status' => false, 'message' => 'Usuário não encontrado.'];
         }
         if (!password_verify($senha,$resultado[0]['senha'])) {
             return ['status' => false, 'message' => 'Senha incorreta.'];
         }
+        $permissoes = $this->db->selectPermissoesPorPerfil($resultado[0]['perfilid']);
         $key = "123456789123456789";
         $algoritimo='HS256';
             $payload = [
                 "iss" => "localhost",
                 "aud" => "localhost",
                 "iat" => time(),
-                "exp" => time() + (60 * 60)
+                "exp" => time() + (60 * 60),
+                "telas" => $permissoes
             ];
             
             $jwt = JWT::encode($payload, $key,$algoritimo);
            
-        return ['status' => true, 'message' => 'Login bem-sucedido!','token'=>$jwt];
+        return ['status' => true, 'message' => 'Login bem-sucedido!','token'=>$jwt, 'telas'=> $permissoes];
     }
 
 

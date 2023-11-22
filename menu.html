@@ -17,23 +17,15 @@
         </div>
         <div class="form-menu">
             <div class="menu-btn">
-                <a href="criaruser.html">CADASTRAR USUÁRIO</a>
-                <a href="criarprod.html">CADASTRAR PRODUTO</a>
-                <a href="buscauser.html">GERENCIAR USUÁRIO</a>
-                <a href="buscaprod.html">GERENCIAR PRODUTO</a>
-                <a href="todosuser.html">LISTA DE USUÁRIOS</a>
-                <a href="todosprod.html">LISTA DE PRODUTOS</a>
-                <a href="prod_e_user.html">VINCULAR</a>
+                <a class="item" href="criaruser.html">CADASTRAR USUÁRIO</a>
+                <a class="item" href="criarprod.html">CADASTRAR PRODUTO</a>
+                <a class="item" href="buscauser.html">GERENCIAR USUÁRIO</a>
+                <a class="item" href="buscaprod.html">GERENCIAR PRODUTO</a>
+                <a class="item" href="todosuser.html">LISTA DE USUÁRIOS</a>
+                <a class="item" href="todosprod.html">LISTA DE PRODUTOS</a>
+                <a class="item" href="prod_e_user.html">VINCULAR</a>
             </div>
         </div>
     </div>
-    <script>
-        window.onload = function() {
-            fetch('/backend/token')
-                .then(response => response.json())
-                .then(data => localStorage.setItem('token', data.token));
-        }
-        
-    </script>
 </body>
 </html>
