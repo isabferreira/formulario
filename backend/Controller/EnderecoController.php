@@ -26,7 +26,9 @@ class EnderecoController {
             'bairro'=>  $this->endereco->getBairro(),
             'cidade'=> $this->endereco->getCidade() ,
             'uf'=>  $this->endereco->getUf(),
-            'iduser'=>  $this->endereco->getIdUser()
+            'iduser'=>  $this->endereco->getIdUser(),
+            'latitude'=>  $this->endereco->getLatitude(),
+            'longitude'=>  $this->endereco->getLongitude()
         ])){
             return true;
         }

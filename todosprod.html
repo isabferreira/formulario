@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Produtos</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/leaflet.css">
+    <script src="js/leaflet.js"></script> 
 </head>
 <body>
     <div class="container">
@@ -24,8 +26,29 @@
                 <div id="prodList"></div>
             </div>
             </form>
+            <form action="#">
+                <div class="form-header">
+
+                </div>
+                <div class="input-group">
+                    <h1>BUSCAR ENDEREÇOS</h1>
+                <button id="getEndButton">Buscar Todos os Endereços</button>
+                <div id="endList"></div>
+            </div>
+            </form>
+            <form action="#">
+                <div class="form-header">
+
+                </div>
+                <div class="input-group">
+                    <h1>ENDEREÇOS CADASTRADOS</h1>
+                    <div id="mapid"></div>
+            </div>
+            </form>
         </div>
     </div>
 <script src="js/getAllPro.js"></script> 
+<script src="js/getEnd.js"></script> 
+<script src="js/mapa.js"></script> 
 </body>
 </html>

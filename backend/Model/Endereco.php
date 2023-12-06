@@ -9,6 +9,8 @@ class Endereco{
     private $cidade;
     private $uf;
     private $iduser;
+    private $latitude;
+    private $longitude;
 
     public function __construct() {
       
@@ -55,6 +57,21 @@ class Endereco{
     }
     public function setIduser($iduser): self {
       $this->iduser = $iduser;
+      return $this;
+    }
+
+    public function getLatitude() {
+      return $this->latitude;
+    }
+    public function setLatitude($latitude): self{
+      $this->latitude = $latitude;
+      return $this;
+    }
+    public function getLongitude() {
+      return $this->longitude;
+    }
+    public function setLongitude($longitude): self{
+      $this->longitude = $longitude;
       return $this;
     }
 }

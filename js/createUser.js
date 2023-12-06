@@ -28,6 +28,8 @@ function createUser() {
         bairro: bairroUsuario,
         cidade: cidadeUsuario,
         uf: ufUsuario,
+        latitude: Latjs,
+        longitude: Lngjs
     };
 
     fetch('/backend/usuarios.php', { 

@@ -57,6 +57,8 @@ class UserController {
             $this->enderecos->setBairro($data['bairro']);
             $this->enderecos->setCidade($data['cidade']);
             $this->enderecos->setUf($data['uf']);
+            $this->enderecos->setLatitude($data['latitude']);
+            $this->enderecos->setLongitude($data['longitude']);
             $this->controllerenderecos = new EnderecoController($this->enderecos);
            if ($this->controllerenderecos->insert()) {
 
